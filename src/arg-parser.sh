@@ -33,7 +33,7 @@ handle_key_word() {
 
   maybe_export_variable
 
-  VARIABLE_KEY="${KEY_NAME}"
+  VARIABLE_KEY="${KEY_NAME//-/_}"
   VARIABLE_VALUE=""
 }
 
