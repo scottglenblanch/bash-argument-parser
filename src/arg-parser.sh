@@ -21,9 +21,12 @@ get_keyname_from_word() {
 }
 
 maybe_export_variable() {
-  if [[ "${VARIABLE_KEY}" != "" ]]
+  if [[ -n "${VARIABLE_KEY}" ]] && [[ -n "${VARIABLE_VALUE}" ]];
   then
     eval "export ${VARIABLE_KEY}='${VARIABLE_VALUE}'"
+  elif  [[ -n "${VARIABLE_KEY}" ]] && [[ -z "${VARIABLE_VALUE}" ]];
+  then
+    eval "export ${VARIABLE_KEY}='true'"
   fi
 }
 
@@ -58,7 +61,6 @@ parse_word() {
     handle_value_word "${WORD}"
   fi
 }
-
 
 for WORD in $INPUT
 do
